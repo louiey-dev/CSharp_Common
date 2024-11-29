@@ -469,6 +469,32 @@ public class CInvokeWrapper
         }
     }
 
+    public void LVItemRemAt(ListView view, int index)
+    {
+        try
+        {
+            if (view.InvokeRequired) { view.Invoke(new MethodInvoker(delegate () { view.Items.RemoveAt(index); })); }
+            else { view.Items.RemoveAt(index); }
+        }
+        catch (Exception ex)
+        {
+            DBG(ex.Message);
+        }
+    }
+
+    public void LVColRem(ListView view, int index)
+    {
+        try
+        {
+            if (view.InvokeRequired) { view.Invoke(new MethodInvoker(delegate () { view.Columns.RemoveAt(index); })); }
+            else { view.Columns.RemoveAt(index); }
+        }
+        catch (Exception ex)
+        {
+            DBG(ex.Message);
+        }
+    }
+
     /// <summary>
     /// List View Item Add
     /// </summary>
@@ -486,6 +512,82 @@ public class CInvokeWrapper
             DBG(ex.Message);
         }
     }
+
+    /// <summary>
+    /// ListView Column add
+    /// </summary>
+    /// <param name="view"></param>
+    /// <param name="itemStr"></param>
+    public void LVColAdd(ListView view, String itemStr)
+    {
+        try
+        {
+            if (view.InvokeRequired) { view.Invoke(new MethodInvoker(delegate () { view.Columns.Add(itemStr); })); }
+            else { view.Columns.Add(itemStr); }
+        }
+        catch (Exception ex)
+        {
+            DBG(ex.Message);
+        }
+    }
+
+    /// <summary>
+    /// ListView Column add with width
+    /// </summary>
+    /// <param name="view"></param>
+    /// <param name="itemStr"></param>
+    /// <param name="width"></param>
+    public void LVColAdd(ListView view, String itemStr, int width)
+    {
+        try
+        {
+            if (view.InvokeRequired) { view.Invoke(new MethodInvoker(delegate () { view.Columns.Add(itemStr, width); })); }
+            else { view.Columns.Add(itemStr, width); }
+        }
+        catch (Exception ex)
+        {
+            DBG(ex.Message);
+        }
+    }
+
+    /// <summary>
+    /// ListView Column add with width/align info
+    /// </summary>
+    /// <param name="view"></param>
+    /// <param name="itemStr"></param>
+    /// <param name="width"></param>
+    /// <param name="align"></param>
+    public void LVColAdd(ListView view, String itemStr, int width, HorizontalAlignment align)
+    {
+        try
+        {
+            if (view.InvokeRequired) { view.Invoke(new MethodInvoker(delegate () { view.Columns.Add(itemStr, width, align); })); }
+            else { view.Columns.Add(itemStr, width, align); }
+        }
+        catch (Exception ex)
+        {
+            DBG(ex.Message);
+        }
+    }
+
+    /// <summary>
+    /// Insert column with index/string
+    /// </summary>
+    /// <param name="view"></param>
+    /// <param name="itemStr"></param>
+    /// <param name="index"></param>
+    public void LVColInsert(ListView view, String itemStr, int index)
+    {
+        try
+        {
+            if (view.InvokeRequired) { view.Invoke(new MethodInvoker(delegate () { view.Columns.Insert(index, itemStr); })); }
+            else { view.Columns.Insert(index, itemStr); }
+        }
+        catch (Exception ex)
+        {
+            DBG(ex.Message);
+        }
+    }
     #endregion
 
     #region ListBox Invoke Wrapper
@@ -494,12 +596,60 @@ public class CInvokeWrapper
     /// </summary>
     /// <param name="lbx"></param>
     /// <param name="str"></param>
-    public void LBAdd(ListBox lbx, string str)
+    public void LBItemAdd(ListBox lbx, string str)
     {
         try
         {
             if (lbx.InvokeRequired) { lbx.Invoke(new MethodInvoker(delegate () { lbx.Items.Add(str); lbx.TopIndex = lbx.Items.Count - 1; })); }
             else { lbx.Items.Add(str); lbx.TopIndex = lbx.Items.Count - 1; }
+        }
+        catch (Exception ex)
+        {
+            DBG(ex.Message);
+        }
+    }
+
+    public void LBItemInsert(ListBox lbx, string str, int index)
+    {
+        try
+        {
+            if (lbx.InvokeRequired) { lbx.Invoke(new MethodInvoker(delegate () { lbx.Items.Insert(index, str); lbx.TopIndex = lbx.Items.Count - 1; })); }
+            else { lbx.Items.Insert(index, str); lbx.TopIndex = lbx.Items.Count - 1; }
+        }
+        catch (Exception ex)
+        {
+            DBG(ex.Message);
+        }
+    }
+
+    /// <summary>
+    /// Remove ListBox selected item
+    /// </summary>
+    /// <param name="lbx"></param>
+    public void LBItemRem(ListBox lbx)
+    {
+        try
+        {
+            if (lbx.InvokeRequired) { lbx.Invoke(new MethodInvoker(delegate () { lbx.Items.Remove(lbx.SelectedIndex); lbx.TopIndex = lbx.Items.Count - 1; })); }
+            else { lbx.Items.Remove(lbx.SelectedIndex); lbx.TopIndex = lbx.Items.Count - 1; }
+        }
+        catch (Exception ex)
+        {
+            DBG(ex.Message);
+        }
+    }
+
+    /// <summary>
+    /// ListBox remove at index
+    /// </summary>
+    /// <param name="lbx"></param>
+    /// <param name="index"></param>
+    public void LBItemRemAt(ListBox lbx, int index)
+    {
+        try
+        {
+            if (lbx.InvokeRequired) { lbx.Invoke(new MethodInvoker(delegate () { lbx.Items.RemoveAt(index); lbx.TopIndex = lbx.Items.Count - 1; })); }
+            else { lbx.Items.RemoveAt(index); lbx.TopIndex = lbx.Items.Count - 1; }
         }
         catch (Exception ex)
         {

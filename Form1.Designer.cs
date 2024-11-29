@@ -40,16 +40,32 @@
             tabPage7 = new TabPage();
             tabControl2 = new TabControl();
             tabPage8 = new TabPage();
-            tbListBoxRem = new Button();
-            tbListBoxAdd = new Button();
-            tbListBox = new TextBox();
-            tbListViewRem = new Button();
-            tbListViewAdd = new Button();
-            tbListView = new TextBox();
-            label2 = new Label();
-            label1 = new Label();
+            groupBox4 = new GroupBox();
+            tbListBoxItemIndex = new TextBox();
+            btnListBoxItemInsert = new Button();
+            btnListBoxItemRem = new Button();
+            btnListBoxInit = new Button();
+            btnListBoxItemAdd = new Button();
             listBox1 = new ListBox();
+            label2 = new Label();
+            tbListBoxItem = new TextBox();
+            groupBox3 = new GroupBox();
+            rbListViewTile = new RadioButton();
+            rbListViewList = new RadioButton();
+            rbListViewDetails = new RadioButton();
             listView1 = new ListView();
+            btnListViewInit = new Button();
+            label1 = new Label();
+            btnListViewGetInfo = new Button();
+            label3 = new Label();
+            btnListViewDataRem = new Button();
+            tbListViewData = new TextBox();
+            btnListViewDataAdd = new Button();
+            tbColName = new TextBox();
+            tbListViewColIndex = new TextBox();
+            btnListViewColInsert = new Button();
+            btnListViewColAdd = new Button();
+            btnListViewColRem = new Button();
             tabPage9 = new TabPage();
             tabPage6 = new TabPage();
             splitContainer1 = new SplitContainer();
@@ -73,10 +89,10 @@
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
             groupBox1 = new GroupBox();
-            rjToggleButton1 = new RJControls.RJToggleButton();
             splitContainerLog = new SplitContainer();
             richTextBoxLog = new RichTextBox();
             toolTip1 = new ToolTip(components);
+            btnListBoxItemInsertSelected = new Button();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainerMain).BeginInit();
             splitContainerMain.Panel1.SuspendLayout();
@@ -86,6 +102,8 @@
             tabPage7.SuspendLayout();
             tabControl2.SuspendLayout();
             tabPage8.SuspendLayout();
+            groupBox4.SuspendLayout();
+            groupBox3.SuspendLayout();
             tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -94,7 +112,6 @@
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             groupBox2.SuspendLayout();
             tabPage5.SuspendLayout();
-            groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainerLog).BeginInit();
             splitContainerLog.Panel1.SuspendLayout();
             splitContainerLog.SuspendLayout();
@@ -117,7 +134,7 @@
             toolStripSplitButton1.ImageTransparentColor = Color.Magenta;
             toolStripSplitButton1.Name = "toolStripSplitButton1";
             toolStripSplitButton1.Size = new Size(40, 28);
-            toolStripSplitButton1.Text = "toolStripSplitButton1";
+            toolStripSplitButton1.Text = "toolStripSplitButton2";
             toolStripSplitButton1.ButtonClick += toolStripSplitButton1_ButtonClick;
             // 
             // splitContainerMain
@@ -159,7 +176,7 @@
             // 
             tabPage7.Controls.Add(tabControl2);
             tabPage7.Location = new Point(4, 24);
-            tabPage7.Margin = new Padding(2, 2, 2, 2);
+            tabPage7.Margin = new Padding(2);
             tabPage7.Name = "tabPage7";
             tabPage7.Size = new Size(800, 551);
             tabPage7.TabIndex = 6;
@@ -172,7 +189,7 @@
             tabControl2.Controls.Add(tabPage9);
             tabControl2.Dock = DockStyle.Fill;
             tabControl2.Location = new Point(0, 0);
-            tabControl2.Margin = new Padding(2, 2, 2, 2);
+            tabControl2.Margin = new Padding(2);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
             tabControl2.Size = new Size(800, 551);
@@ -180,130 +197,308 @@
             // 
             // tabPage8
             // 
-            tabPage8.Controls.Add(tbListBoxRem);
-            tabPage8.Controls.Add(tbListBoxAdd);
-            tabPage8.Controls.Add(tbListBox);
-            tabPage8.Controls.Add(tbListViewRem);
-            tabPage8.Controls.Add(tbListViewAdd);
-            tabPage8.Controls.Add(tbListView);
-            tabPage8.Controls.Add(label2);
-            tabPage8.Controls.Add(label1);
-            tabPage8.Controls.Add(listBox1);
-            tabPage8.Controls.Add(listView1);
+            tabPage8.Controls.Add(groupBox4);
+            tabPage8.Controls.Add(groupBox3);
             tabPage8.Location = new Point(4, 24);
-            tabPage8.Margin = new Padding(2, 2, 2, 2);
+            tabPage8.Margin = new Padding(2);
             tabPage8.Name = "tabPage8";
-            tabPage8.Padding = new Padding(2, 2, 2, 2);
+            tabPage8.Padding = new Padding(2);
             tabPage8.Size = new Size(792, 523);
             tabPage8.TabIndex = 0;
             tabPage8.Text = "ListView/Box";
             tabPage8.UseVisualStyleBackColor = true;
             // 
-            // tbListBoxRem
+            // groupBox4
             // 
-            tbListBoxRem.Location = new Point(282, 277);
-            tbListBoxRem.Margin = new Padding(2, 2, 2, 2);
-            tbListBoxRem.Name = "tbListBoxRem";
-            tbListBoxRem.Size = new Size(78, 20);
-            tbListBoxRem.TabIndex = 7;
-            tbListBoxRem.Text = "Rem";
-            tbListBoxRem.UseVisualStyleBackColor = true;
+            groupBox4.Controls.Add(btnListBoxItemInsertSelected);
+            groupBox4.Controls.Add(tbListBoxItemIndex);
+            groupBox4.Controls.Add(btnListBoxItemInsert);
+            groupBox4.Controls.Add(btnListBoxItemRem);
+            groupBox4.Controls.Add(btnListBoxInit);
+            groupBox4.Controls.Add(btnListBoxItemAdd);
+            groupBox4.Controls.Add(listBox1);
+            groupBox4.Controls.Add(label2);
+            groupBox4.Controls.Add(tbListBoxItem);
+            groupBox4.Location = new Point(5, 235);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(782, 251);
+            groupBox4.TabIndex = 12;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "groupBox4";
             // 
-            // tbListBoxAdd
+            // tbListBoxItemIndex
             // 
-            tbListBoxAdd.Location = new Point(282, 253);
-            tbListBoxAdd.Margin = new Padding(2, 2, 2, 2);
-            tbListBoxAdd.Name = "tbListBoxAdd";
-            tbListBoxAdd.Size = new Size(78, 20);
-            tbListBoxAdd.TabIndex = 6;
-            tbListBoxAdd.Text = "Add";
-            tbListBoxAdd.UseVisualStyleBackColor = true;
-            tbListBoxAdd.Click += tbListBoxAdd_Click;
+            tbListBoxItemIndex.Location = new Point(489, 130);
+            tbListBoxItemIndex.Name = "tbListBoxItemIndex";
+            tbListBoxItemIndex.Size = new Size(59, 23);
+            tbListBoxItemIndex.TabIndex = 8;
+            tbListBoxItemIndex.Text = "1";
             // 
-            // tbListBox
+            // btnListBoxItemInsert
             // 
-            tbListBox.Location = new Point(282, 231);
-            tbListBox.Margin = new Padding(2, 2, 2, 2);
-            tbListBox.Name = "tbListBox";
-            tbListBox.Size = new Size(185, 23);
-            tbListBox.TabIndex = 5;
+            btnListBoxItemInsert.Location = new Point(364, 130);
+            btnListBoxItemInsert.Name = "btnListBoxItemInsert";
+            btnListBoxItemInsert.Size = new Size(75, 23);
+            btnListBoxItemInsert.TabIndex = 7;
+            btnListBoxItemInsert.Text = "Item Insert";
+            btnListBoxItemInsert.UseVisualStyleBackColor = true;
+            btnListBoxItemInsert.Click += btnListBoxItemInsert_Click;
             // 
-            // tbListViewRem
+            // btnListBoxItemRem
             // 
-            tbListViewRem.Location = new Point(282, 82);
-            tbListViewRem.Margin = new Padding(2, 2, 2, 2);
-            tbListViewRem.Name = "tbListViewRem";
-            tbListViewRem.Size = new Size(78, 20);
-            tbListViewRem.TabIndex = 4;
-            tbListViewRem.Text = "Rem";
-            tbListViewRem.UseVisualStyleBackColor = true;
-            tbListViewRem.Click += tbListViewRem_Click;
+            btnListBoxItemRem.Location = new Point(364, 101);
+            btnListBoxItemRem.Name = "btnListBoxItemRem";
+            btnListBoxItemRem.Size = new Size(75, 23);
+            btnListBoxItemRem.TabIndex = 6;
+            btnListBoxItemRem.Text = "Item Rem";
+            btnListBoxItemRem.UseVisualStyleBackColor = true;
+            btnListBoxItemRem.Click += btnListBoxItemRem_Click;
             // 
-            // tbListViewAdd
+            // btnListBoxInit
             // 
-            tbListViewAdd.Location = new Point(282, 58);
-            tbListViewAdd.Margin = new Padding(2, 2, 2, 2);
-            tbListViewAdd.Name = "tbListViewAdd";
-            tbListViewAdd.Size = new Size(78, 20);
-            tbListViewAdd.TabIndex = 4;
-            tbListViewAdd.Text = "Add";
-            tbListViewAdd.UseVisualStyleBackColor = true;
-            tbListViewAdd.Click += tbListViewAdd_Click;
+            btnListBoxInit.Location = new Point(90, 16);
+            btnListBoxInit.Name = "btnListBoxInit";
+            btnListBoxInit.Size = new Size(75, 23);
+            btnListBoxInit.TabIndex = 6;
+            btnListBoxInit.Text = "ListBox Init";
+            btnListBoxInit.UseVisualStyleBackColor = true;
+            btnListBoxInit.Click += btnListBoxInit_Click;
             // 
-            // tbListView
+            // btnListBoxItemAdd
             // 
-            tbListView.Location = new Point(282, 35);
-            tbListView.Margin = new Padding(2, 2, 2, 2);
-            tbListView.Name = "tbListView";
-            tbListView.Size = new Size(185, 23);
-            tbListView.TabIndex = 3;
+            btnListBoxItemAdd.Location = new Point(363, 72);
+            btnListBoxItemAdd.Name = "btnListBoxItemAdd";
+            btnListBoxItemAdd.Size = new Size(75, 23);
+            btnListBoxItemAdd.TabIndex = 6;
+            btnListBoxItemAdd.Text = "Item Add";
+            btnListBoxItemAdd.UseVisualStyleBackColor = true;
+            btnListBoxItemAdd.Click += btnListBoxItemAdd_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(6, 44);
+            listBox1.Margin = new Padding(2);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(353, 169);
+            listBox1.TabIndex = 1;
+            toolTip1.SetToolTip(listBox1, " 박스안에 선택가능한 옵션 리스트를 표시하는 컨트롤");
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(11, 211);
+            label2.Location = new Point(6, 24);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(45, 15);
             label2.TabIndex = 2;
             label2.Text = "ListBox";
             // 
+            // tbListBoxItem
+            // 
+            tbListBoxItem.Location = new Point(363, 44);
+            tbListBoxItem.Margin = new Padding(2);
+            tbListBoxItem.Name = "tbListBoxItem";
+            tbListBoxItem.Size = new Size(185, 23);
+            tbListBoxItem.TabIndex = 5;
+            tbListBoxItem.Text = "apple";
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(rbListViewTile);
+            groupBox3.Controls.Add(rbListViewList);
+            groupBox3.Controls.Add(rbListViewDetails);
+            groupBox3.Controls.Add(listView1);
+            groupBox3.Controls.Add(btnListViewInit);
+            groupBox3.Controls.Add(label1);
+            groupBox3.Controls.Add(btnListViewGetInfo);
+            groupBox3.Controls.Add(label3);
+            groupBox3.Controls.Add(btnListViewDataRem);
+            groupBox3.Controls.Add(tbListViewData);
+            groupBox3.Controls.Add(btnListViewDataAdd);
+            groupBox3.Controls.Add(tbColName);
+            groupBox3.Controls.Add(tbListViewColIndex);
+            groupBox3.Controls.Add(btnListViewColInsert);
+            groupBox3.Controls.Add(btnListViewColAdd);
+            groupBox3.Controls.Add(btnListViewColRem);
+            groupBox3.Location = new Point(5, 5);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(782, 207);
+            groupBox3.TabIndex = 11;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "ListView";
+            // 
+            // rbListViewTile
+            // 
+            rbListViewTile.AutoSize = true;
+            rbListViewTile.Location = new Point(505, 171);
+            rbListViewTile.Name = "rbListViewTile";
+            rbListViewTile.Size = new Size(43, 19);
+            rbListViewTile.TabIndex = 13;
+            rbListViewTile.Text = "Tile";
+            rbListViewTile.UseVisualStyleBackColor = true;
+            rbListViewTile.CheckedChanged += rbListViewTile_CheckedChanged;
+            // 
+            // rbListViewList
+            // 
+            rbListViewList.Location = new Point(447, 168);
+            rbListViewList.Name = "rbListViewList";
+            rbListViewList.Size = new Size(46, 24);
+            rbListViewList.TabIndex = 14;
+            rbListViewList.Text = "List";
+            rbListViewList.CheckedChanged += rbListViewList_CheckedChanged;
+            // 
+            // rbListViewDetails
+            // 
+            rbListViewDetails.Checked = true;
+            rbListViewDetails.Location = new Point(372, 168);
+            rbListViewDetails.Name = "rbListViewDetails";
+            rbListViewDetails.Size = new Size(69, 24);
+            rbListViewDetails.TabIndex = 14;
+            rbListViewDetails.TabStop = true;
+            rbListViewDetails.Text = "Details";
+            rbListViewDetails.CheckedChanged += rbListViewDetails_CheckedChanged;
+            // 
+            // listView1
+            // 
+            listView1.FullRowSelect = true;
+            listView1.Location = new Point(6, 43);
+            listView1.Margin = new Padding(2);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(353, 159);
+            listView1.TabIndex = 0;
+            toolTip1.SetToolTip(listView1, "파일 탐색기의 디렉토리 내 파일들처럼 아이템들을 여러 리스트 형태로 보여주는 컨트롤");
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // btnListViewInit
+            // 
+            btnListViewInit.Location = new Point(71, 17);
+            btnListViewInit.Name = "btnListViewInit";
+            btnListViewInit.Size = new Size(94, 23);
+            btnListViewInit.TabIndex = 10;
+            btnListViewInit.Text = "ListView Init";
+            btnListViewInit.UseVisualStyleBackColor = true;
+            btnListViewInit.Click += btnListViewInit_Click;
+            // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(11, 17);
+            label1.Location = new Point(6, 25);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(51, 15);
             label1.TabIndex = 2;
             label1.Text = "ListView";
             // 
-            // listBox1
+            // btnListViewGetInfo
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(11, 231);
-            listBox1.Margin = new Padding(2, 2, 2, 2);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(268, 169);
-            listBox1.TabIndex = 1;
+            btnListViewGetInfo.Location = new Point(199, 15);
+            btnListViewGetInfo.Name = "btnListViewGetInfo";
+            btnListViewGetInfo.Size = new Size(75, 23);
+            btnListViewGetInfo.TabIndex = 9;
+            btnListViewGetInfo.Text = "Get Info";
+            btnListViewGetInfo.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // label3
             // 
-            listView1.Location = new Point(11, 35);
-            listView1.Margin = new Padding(2, 2, 2, 2);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(268, 144);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
+            label3.AutoSize = true;
+            label3.Location = new Point(676, 126);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(78, 15);
+            label3.TabIndex = 2;
+            label3.Text = "Starts from 0";
+            // 
+            // btnListViewDataRem
+            // 
+            btnListViewDataRem.Location = new Point(366, 100);
+            btnListViewDataRem.Name = "btnListViewDataRem";
+            btnListViewDataRem.Size = new Size(75, 23);
+            btnListViewDataRem.TabIndex = 8;
+            btnListViewDataRem.Text = "Data Rem";
+            btnListViewDataRem.UseVisualStyleBackColor = true;
+            btnListViewDataRem.Click += btnListViewDataRem_Click;
+            // 
+            // tbListViewData
+            // 
+            tbListViewData.Location = new Point(363, 43);
+            tbListViewData.Margin = new Padding(2);
+            tbListViewData.Name = "tbListViewData";
+            tbListViewData.Size = new Size(185, 23);
+            tbListViewData.TabIndex = 3;
+            toolTip1.SetToolTip(tbListViewData, "Input data");
+            // 
+            // btnListViewDataAdd
+            // 
+            btnListViewDataAdd.Location = new Point(366, 71);
+            btnListViewDataAdd.Name = "btnListViewDataAdd";
+            btnListViewDataAdd.Size = new Size(75, 23);
+            btnListViewDataAdd.TabIndex = 8;
+            btnListViewDataAdd.Text = "Data add";
+            btnListViewDataAdd.UseVisualStyleBackColor = true;
+            btnListViewDataAdd.Click += btnListViewDataAdd_Click;
+            // 
+            // tbColName
+            // 
+            tbColName.Location = new Point(569, 43);
+            tbColName.Margin = new Padding(2);
+            tbColName.Name = "tbColName";
+            tbColName.Size = new Size(185, 23);
+            tbColName.TabIndex = 3;
+            toolTip1.SetToolTip(tbColName, "Input column name");
+            tbColName.KeyPress += tbColName_KeyPress;
+            // 
+            // tbListViewColIndex
+            // 
+            tbListViewColIndex.Location = new Point(676, 101);
+            tbListViewColIndex.Margin = new Padding(2);
+            tbListViewColIndex.Name = "tbListViewColIndex";
+            tbListViewColIndex.Size = new Size(78, 23);
+            tbListViewColIndex.TabIndex = 3;
+            tbListViewColIndex.Text = "1";
+            toolTip1.SetToolTip(tbListViewColIndex, "Index number of column");
+            // 
+            // btnListViewColInsert
+            // 
+            btnListViewColInsert.Location = new Point(569, 118);
+            btnListViewColInsert.Margin = new Padding(2);
+            btnListViewColInsert.Name = "btnListViewColInsert";
+            btnListViewColInsert.Size = new Size(78, 20);
+            btnListViewColInsert.TabIndex = 4;
+            btnListViewColInsert.Text = "Col Insert";
+            btnListViewColInsert.UseVisualStyleBackColor = true;
+            btnListViewColInsert.Click += btnListViewColInsert_Click;
+            // 
+            // btnListViewColAdd
+            // 
+            btnListViewColAdd.Location = new Point(569, 70);
+            btnListViewColAdd.Margin = new Padding(2);
+            btnListViewColAdd.Name = "btnListViewColAdd";
+            btnListViewColAdd.Size = new Size(78, 20);
+            btnListViewColAdd.TabIndex = 4;
+            btnListViewColAdd.Text = "Col Add";
+            btnListViewColAdd.UseVisualStyleBackColor = true;
+            btnListViewColAdd.Click += btnListViewColAdd_Click;
+            // 
+            // btnListViewColRem
+            // 
+            btnListViewColRem.Location = new Point(569, 94);
+            btnListViewColRem.Margin = new Padding(2);
+            btnListViewColRem.Name = "btnListViewColRem";
+            btnListViewColRem.Size = new Size(78, 20);
+            btnListViewColRem.TabIndex = 4;
+            btnListViewColRem.Text = "Col Rem";
+            btnListViewColRem.UseVisualStyleBackColor = true;
+            btnListViewColRem.Click += btnListViewColRem_Click;
             // 
             // tabPage9
             // 
             tabPage9.Location = new Point(4, 24);
-            tabPage9.Margin = new Padding(2, 2, 2, 2);
+            tabPage9.Margin = new Padding(2);
             tabPage9.Name = "tabPage9";
-            tabPage9.Padding = new Padding(2, 2, 2, 2);
-            tabPage9.Size = new Size(796, 546);
+            tabPage9.Padding = new Padding(2);
+            tabPage9.Size = new Size(792, 523);
             tabPage9.TabIndex = 1;
             tabPage9.Text = "Select";
             tabPage9.UseVisualStyleBackColor = true;
@@ -313,7 +508,7 @@
             tabPage6.Controls.Add(splitContainer1);
             tabPage6.Location = new Point(4, 24);
             tabPage6.Name = "tabPage6";
-            tabPage6.Size = new Size(802, 563);
+            tabPage6.Size = new Size(800, 551);
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Chart";
             tabPage6.UseVisualStyleBackColor = true;
@@ -339,8 +534,8 @@
             splitContainer1.Panel2.Controls.Add(btnChartInit);
             splitContainer1.Panel2.Controls.Add(btnChartGo2);
             splitContainer1.Panel2.Controls.Add(btnChartGo1);
-            splitContainer1.Size = new Size(802, 563);
-            splitContainer1.SplitterDistance = 496;
+            splitContainer1.Size = new Size(800, 551);
+            splitContainer1.SplitterDistance = 484;
             splitContainer1.TabIndex = 0;
             // 
             // chart1
@@ -359,7 +554,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chart1.Series.Add(series1);
-            chart1.Size = new Size(802, 496);
+            chart1.Size = new Size(800, 484);
             chart1.TabIndex = 0;
             chart1.Text = "chart1";
             // 
@@ -513,8 +708,8 @@
             // 
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 3, 3, 3);
-            tabPage1.Size = new Size(802, 563);
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(800, 551);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Serial";
             tabPage1.UseVisualStyleBackColor = true;
@@ -523,8 +718,8 @@
             // 
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 3, 3, 3);
-            tabPage2.Size = new Size(802, 563);
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(800, 551);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Socket";
             tabPage2.UseVisualStyleBackColor = true;
@@ -533,7 +728,7 @@
             // 
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(802, 563);
+            tabPage3.Size = new Size(800, 551);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "FileIO";
             tabPage3.UseVisualStyleBackColor = true;
@@ -542,7 +737,7 @@
             // 
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(802, 563);
+            tabPage4.Size = new Size(800, 551);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "CSV";
             tabPage4.UseVisualStyleBackColor = true;
@@ -552,36 +747,19 @@
             tabPage5.Controls.Add(groupBox1);
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(802, 563);
+            tabPage5.Size = new Size(800, 551);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Switch/Button";
             tabPage5.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(rjToggleButton1);
             groupBox1.Location = new Point(7, 3);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(347, 503);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Switch";
-            // 
-            // rjToggleButton1
-            // 
-            rjToggleButton1.AutoSize = true;
-            rjToggleButton1.BackColor = Color.Transparent;
-            rjToggleButton1.ForeColor = Color.Transparent;
-            rjToggleButton1.Location = new Point(6, 22);
-            rjToggleButton1.MinimumSize = new Size(45, 22);
-            rjToggleButton1.Name = "rjToggleButton1";
-            rjToggleButton1.OffBackColor = Color.Gray;
-            rjToggleButton1.OffToggleColor = Color.Gainsboro;
-            rjToggleButton1.OnBackColor = Color.Violet;
-            rjToggleButton1.OnToggleColor = Color.WhiteSmoke;
-            rjToggleButton1.Size = new Size(45, 22);
-            rjToggleButton1.TabIndex = 1;
-            rjToggleButton1.UseVisualStyleBackColor = false;
             // 
             // splitContainerLog
             // 
@@ -608,6 +786,16 @@
             richTextBoxLog.TabIndex = 0;
             richTextBoxLog.Text = "";
             // 
+            // btnListBoxItemInsertSelected
+            // 
+            btnListBoxItemInsertSelected.Location = new Point(364, 159);
+            btnListBoxItemInsertSelected.Name = "btnListBoxItemInsertSelected";
+            btnListBoxItemInsertSelected.Size = new Size(103, 23);
+            btnListBoxItemInsertSelected.TabIndex = 9;
+            btnListBoxItemInsertSelected.Text = "Insert Selected";
+            btnListBoxItemInsertSelected.UseVisualStyleBackColor = true;
+            btnListBoxItemInsertSelected.Click += btnListBoxItemInsertSelected_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -627,7 +815,10 @@
             tabPage7.ResumeLayout(false);
             tabControl2.ResumeLayout(false);
             tabPage8.ResumeLayout(false);
-            tabPage8.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             tabPage6.ResumeLayout(false);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
@@ -638,8 +829,6 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             tabPage5.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             splitContainerLog.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainerLog).EndInit();
             splitContainerLog.ResumeLayout(false);
@@ -678,7 +867,6 @@
         private RadioButton rbGridSolid;
         private GroupBox groupBox2;
         public RichTextBox richTextBoxLog;
-        private ToolStripSplitButton toolStripSplitButton1;
         private TabPage tabPage7;
         private TabControl tabControl2;
         private TabPage tabPage8;
@@ -687,11 +875,31 @@
         private ListView listView1;
         private TabPage tabPage9;
         private Label label2;
-        private TextBox tbListView;
-        private Button tbListBoxRem;
-        private Button tbListBoxAdd;
-        private TextBox tbListBox;
-        private Button tbListViewRem;
-        private Button tbListViewAdd;
+        private TextBox tbListViewData;
+        private TextBox tbListBoxItem;
+        private Button btnListViewColRem;
+        private Button btnListViewColAdd;
+        private TextBox tbColName;
+        private Button btnListViewDataRem;
+        private Button btnListViewDataAdd;
+        private Button btnListViewColInsert;
+        private TextBox tbListViewColIndex;
+        private Button btnListViewGetInfo;
+        private Button btnListViewInit;
+        private Label label3;
+        private ToolStripSplitButton toolStripSplitButton1;
+        private GroupBox groupBox3;
+        private RadioButton radioButton4;
+        private RadioButton rbListViewTile;
+        private RadioButton radioButton2;
+        private RadioButton rbListViewDetails;
+        private RadioButton rbListViewList;
+        private GroupBox groupBox4;
+        private Button btnListBoxItemRem;
+        private Button btnListBoxItemAdd;
+        private Button btnListBoxInit;
+        private TextBox tbListBoxItemIndex;
+        private Button btnListBoxItemInsert;
+        private Button btnListBoxItemInsertSelected;
     }
 }

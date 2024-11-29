@@ -118,7 +118,7 @@ namespace CSharp_Common
         {
             try
             {
-                String str = tbListView.Text + "\n";
+                String str = tbListViewData.Text + "\n";
                 ListViewItem item = new ListViewItem(str);
 
                 Iw.LVItemAdd(listView1, item);
@@ -129,16 +129,51 @@ namespace CSharp_Common
             }
         }
 
-        private void tbListViewRem_Click(object sender, EventArgs e)
+        //private void tbListViewRem_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        //String str = tbListView.Text;
+        //        //ListViewItem item = new ListViewItem(str);
+
+        //        //int i = listView1.Items.IndexOf(str);
+
+        //        //Iw.LVItemRem(listView1, listView1.Items[i]);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log.e(ex.Message);
+        //    }
+        //}
+
+        //private void tbListBoxAdd_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log.e(ex.Message);
+        //    }
+        //}
+
+        private void btnListViewColAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                //String str = tbListView.Text;
-                //ListViewItem item = new ListViewItem(str);
+                if (tbColName.Text == null)
+                {
+                    MessageBox.Show("Please input column name");
+                    return;
+                }
+                listView1.BeginUpdate();
 
-                //int i = listView1.Items.IndexOf(str);
+                String str = Iw.TBGet(tbColName);
+                Iw.LVColAdd(listView1, str);
 
-                //Iw.LVItemRem(listView1, listView1.Items[i]);
+                Iw.TBSet(tbColName, "");
+
+                listView1.EndUpdate();
             }
             catch (Exception ex)
             {
@@ -146,16 +181,124 @@ namespace CSharp_Common
             }
         }
 
-        private void tbListBoxAdd_Click(object sender, EventArgs e)
+        private void btnListViewInit_Click(object sender, EventArgs e)
         {
-            try
+            ListViewInit(listView1);
+        }
+
+        private void btnListViewColRem_Click(object sender, EventArgs e)
+        {
+            int index = Convert.ToInt32(tbListViewColIndex.Text);
+            listView1.BeginUpdate();
+            Iw.LVColRem(listView1, index);
+            listView1.EndUpdate();
+        }
+
+        private void btnListViewColInsert_Click(object sender, EventArgs e)
+        {
+            if (tbListViewColIndex.Text == null)
             {
-                
+                MessageBox.Show("Please input number");
+                return;
             }
-            catch (Exception ex)
+            listView1.BeginUpdate();
+            int index = Convert.ToInt32(tbListViewColIndex.Text);
+            String str = Iw.TBGet(tbListViewColIndex);
+            Iw.LVColInsert(listView1, str, index);
+            listView1.EndUpdate();
+        }
+
+        private void tbColName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //숫자와 백스페이스만 입력
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
             {
-                Log.e(ex.Message);
+                e.Handled = true;
             }
+        }
+        private void btnListViewDataAdd_Click(object sender, EventArgs e)
+        {
+            listView1.BeginUpdate();
+
+            int idx = listView1.Items.Count;
+
+            // Create three items and three sets of subitems for each item.
+            ListViewItem item1 = new ListViewItem("item" + idx, 0);
+            // Place a check mark next to the item.
+            //item1.Checked = true;
+            item1.SubItems.Add("1");
+            item1.SubItems.Add("2");
+            item1.SubItems.Add("3");
+
+            Iw.LVItemAdd(listView1, item1);
+
+            listView1.EndUpdate();
+        }
+
+        private void rbListViewTile_CheckedChanged(object sender, EventArgs e)
+        {
+            listView1.View = View.Tile;
+        }
+
+        private void rbListViewDetails_CheckedChanged(object sender, EventArgs e)
+        {
+            listView1.View = View.Details;
+        }
+
+        private void rbListViewList_CheckedChanged(object sender, EventArgs e)
+        {
+            listView1.View = View.List;
+        }
+
+        private void btnListViewDataRem_Click(object sender, EventArgs e)
+        {
+            listView1.BeginUpdate();
+
+            //선택한 index를 찾아서 그 인덱스를 지우면 된다.
+            var selIdx = listView1.SelectedIndices;
+
+            if (selIdx.Count > 0)
+                Iw.LVItemRemAt(listView1, selIdx[0]);
+
+            listView1.EndUpdate();
+        }
+
+        private void btnListBoxItemAdd_Click(object sender, EventArgs e)
+        {
+            String str = Iw.TBGet(tbListBoxItem);
+
+            Iw.LBItemAdd(listBox1, str);
+        }
+
+        private void btnListBoxItemRem_Click(object sender, EventArgs e)
+        {
+            int index = listBox1.SelectedIndex;
+
+            Iw.LBItemRemAt(listBox1, index);
+        }
+
+        private void btnListBoxInit_Click(object sender, EventArgs e)
+        {
+            Iw.LBItemAdd(listBox1, "apple");
+            Iw.LBItemAdd(listBox1, "mango");
+            Iw.LBItemAdd(listBox1, "pear");
+            Iw.LBItemAdd(listBox1, "banana");
+        }
+
+        private void btnListBoxItemInsert_Click(object sender, EventArgs e)
+        {
+            int index = Convert.ToInt32(Iw.TBGet(tbListBoxItemIndex));
+            String str = Iw.TBGet(tbListBoxItem);
+
+            Iw.LBItemInsert(listBox1, str, index);
+        }
+
+        private void btnListBoxItemInsertSelected_Click(object sender, EventArgs e)
+        {
+            int index = listBox1.SelectedIndex;
+            String str = Iw.TBGet(tbListBoxItem);
+
+            Iw.LBItemInsert(listBox1, str, index);
         }
     }
 }
