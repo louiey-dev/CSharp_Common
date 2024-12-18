@@ -7,10 +7,15 @@ namespace CSharp_Common
         Series chartNo = null;
         Series chartCount = null;
 
+        int chartSeriesIdx = 0;
+        String[] charSeriesName = { "bus", "taxi", "bicycle", "airplane", "wagon" };
+        Series[] charSeries;
+
         public void ChartInit()
         {
             try
             {
+
                 Series chartNo = chart1.Series.Add("No");
                 Series chartCount = chart1.Series.Add("Count");
 

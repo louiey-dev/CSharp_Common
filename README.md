@@ -12,6 +12,10 @@ This is for C# program function sample reference for copy/paste for work.
 - ToolBox
     - ToolBox sample code
 
+# TO DO
+- Terminal implement via putty
+- 
+
 # History
 - 2024.11.21
     - First created

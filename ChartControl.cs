@@ -140,6 +140,66 @@ namespace CSharp_Common
                 Debug.Print(ex.Message);
             }
         }
+
+        public void ChartSeriesAdd(Chart ch, Series series, String seriesName, SeriesChartType chartType, Color color, MarkerStyle markerStyle, int markerSize)
+        {
+            try
+            {
+                if (ch.InvokeRequired)
+                {
+                    ch.Invoke(new MethodInvoker(delegate ()
+                    {
+                        series = ch.Series.Add(seriesName);
+                        series.ChartType = chartType;
+                        ch.Series[seriesName].Color = color;
+                        ch.Series[seriesName].MarkerStyle = markerStyle;
+                        ch.Series[seriesName].MarkerSize = markerSize;
+                    }));
+                }
+                else
+                {
+                    series = ch.Series.Add(seriesName);
+                    series.ChartType = chartType;
+                    ch.Series[seriesName].Color = color;
+                    ch.Series[seriesName].MarkerStyle = markerStyle;
+                    ch.Series[seriesName].MarkerSize = markerSize;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.Print(ex.Message);
+            }
+        }
+
+        public void ChartSeriesAdd(Chart ch, Series series, String seriesName, SeriesChartType chartType, Color color, ChartDashStyle borderDashStyle, int borderWidth)
+        {
+            try
+            {
+                if (ch.InvokeRequired)
+                {
+                    ch.Invoke(new MethodInvoker(delegate ()
+                    {
+                        series = ch.Series.Add(seriesName);
+                        series.ChartType = chartType;
+                        ch.Series[seriesName].Color = color;
+                        ch.Series[seriesName].BorderDashStyle = borderDashStyle;
+                        ch.Series[seriesName].BorderWidth = borderWidth;
+                    }));
+                }
+                else
+                {
+                    series = ch.Series.Add(seriesName);
+                    series.ChartType = chartType;
+                    ch.Series[seriesName].Color = color;
+                    ch.Series[seriesName].BorderDashStyle = borderDashStyle;
+                    ch.Series[seriesName].BorderWidth = borderWidth;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.Print(ex.Message);
+            }
+        }
 #endif
     }
 }

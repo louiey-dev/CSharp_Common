@@ -300,5 +300,21 @@ namespace CSharp_Common
 
             Iw.LBItemInsert(listBox1, str, index);
         }
+
+
+        private void btnChartSeriesAdd_Click(object sender, EventArgs e)
+        {
+            //ChartSeriesAdd(chart1, charSeries[chartSeriesIdx], charSeriesName[chartSeriesIdx], SeriesChartType.Line, Color.Black, ChartDashStyle.Dash, 3);
+        }
+
+        private void btnTermCom_Click(object sender, EventArgs e)
+        {
+            TermUartCom(cbbTermComPort);
+        }
+
+        private void btnTermComOpenClose_Click(object sender, EventArgs e)
+        {
+            TermUartComOpen();
+        }
     }
 }
