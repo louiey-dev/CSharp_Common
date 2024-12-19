@@ -316,5 +316,118 @@ namespace CSharp_Common
         {
             TermUartComOpen();
         }
+
+        private void tbPuttyCmd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbPuttyCmd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                if (puttyCmdStreamWriter != null)
+                {
+                    try
+                    {
+                        string str = TBGet(tbPuttyCmd);
+                        puttyCmdStreamWriter.WriteLine(str);
+                        DBG(str);
+
+                        TBSet(tbPuttyCmd, "");
+                    }
+                    catch (Exception ex)
+                    {
+                        ERR(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void richTextBoxTerm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+#if false
+            if (e.KeyChar == '\r')
+            {
+                if (puttyCmdStreamWriter != null)
+                {
+                    try
+                    {
+                        //string str = richTextBoxTerm.Lines.LastOrDefault() ?? string.Empty;
+                        string str = richTextBoxTerm.Lines[richTextBoxTerm.Lines.Length - 2] ?? string.Empty;
+                        puttyCmdStreamWriter.WriteLine(str);
+                        DBG(str);
+                    }
+                    catch (Exception ex)
+                    {
+                        ERR(ex.Message);
+                    }
+                }
+            }
+#else
+            // 키 입력의 기본 동작(에코) 방지
+            //e.Handled = true;
+            puttyCmdStreamWriter.Write(e.KeyChar.ToString());
+#endif
+        }
+
+        private void richTextBoxTerm_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            try
+            {
+                if (e.Control && e.KeyCode == Keys.C)
+                {
+                    // ctrl+c key 처리
+                    e.IsInputKey = true; // 기본 동작 방지
+                    puttyCmdStreamWriter.Write(new char[] { (char)(0x03) }, 0, 1);
+                }
+                else if (e.KeyCode == Keys.Tab)
+                {
+                    // Tab 키 처리 로직
+                    //puttyCmdStreamWriter.Write(0x09);
+                    puttyCmdStreamWriter.Write(new char[] { (char)(0x09) }, 0, 1);
+                    //new byte[] { 0x09 }, 0, 1
+
+                    e.IsInputKey = true; // 기본 동작 방지
+                }
+                else if (e.KeyCode == Keys.Back)
+                {
+                    e.IsInputKey = true; // Prevent further processing of this key
+
+                    // Handle backspace key press
+                    // For example, you might want to remove the last character from the text
+                    // 현재 커서의 인덱스를 가져옵니다.
+                    int currentIndex = richTextBoxTerm.SelectionStart;
+
+                    // 현재 인덱스에 해당하는 라인 번호를 구합니다.
+                    int currentLine = richTextBoxTerm.GetLineFromCharIndex(currentIndex);
+
+                    // 해당 라인의 텍스트를 가져옵니다.
+                    string lineText = richTextBoxTerm.Lines[currentLine];
+
+                    if (lineText.Length > 0)
+                    {
+                        DBG(lineText);
+                        lineText = lineText.Substring(0, lineText.Length - 1);
+                        DBG(lineText);
+                        //richTextBoxTerminal.SelectionStart = lineText.Length; // Set cursor at the end
+                        richTextBoxTerm.Lines[currentLine] = lineText;
+                        //richTextBoxTerminal.SelectionStart = richTextBoxTerminal.SelectionStart - 1; // Set cursor at the end
+                    }
+                }
+                //else if (e.KeyCode == Keys.Escape)
+                //{
+                //    e.IsInputKey = true;
+                //}
+                //else if (e.KeyCode == Keys.LineFeed)
+                //{
+                //    e.IsInputKey = true;
+                //}
+            }
+            catch (Exception err)
+            {
+                ERR(err.ToString());
+            }
+        }
     }
 }
